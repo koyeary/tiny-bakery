@@ -65,10 +65,16 @@ $("h1").text(newdate);
 
 //this is code for the modal window
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = $("#myModal");
 
+/* var timeSlot = $("td") */
 // Get the button that opens the modal
-var btn = $("#myBtn");
+/* function newEvent () { */
+$("input").focusin(function() {
+  $( this ).find( "span" ).css( "display", "inline" ).fadeOut( 1000 );
+  /* modal.style.display = "block"; */
+});
+
 
 // Get the <span> element that closes the modal
 var span = $("span");
@@ -77,9 +83,9 @@ var span = $("span");
 /* btn.onclick = function() {
   modal.style.display = "block";
 } */
-btn.click(function() {
+/* btn.click(function() {
   modal.style.display = "block";
-})
+})  */
 
 // When the user clicks on <span> (x), close the modal
 span.click(function() {
@@ -92,29 +98,32 @@ span.click(function() {
     modal.style.display = "none";
   }})
 
-//When we hit the submit button, the form input is stored in local storage.
-$("#add-event").on("click", function(event) {
+//When we click a time-block, a form to enter a new event pops up.
+function addEvent() {
+  $("#add-event").on("click", function(event) {
   event.preventDefault();
   //declare an empty array to eliminate repetition
   var newEvent = [];
 
-  var eventHour = $("#event-hour").val().trim();
-  var eventMinutes = $("#event-minutes").val().trim();
+ /*  var eventHour = $("#event-hour").val().trim();
+  var eventMinutes = $("#event-minutes").val().trim(); */
   var eventName = $("#event-name").val().trim();
   var eventDetails = $("#event-details").val().trim();
 
-  newEvent.push(eventHour, eventMinutes, eventName, eventDetails);
+  newEvent.push(/* eventHour, eventMinutes,  */eventName, eventDetails);
   console.log(newEvent);
-
- /* for (var i = 0; i < newEvent.length; i++) {
-   if (newEvent[1] == 
-  
-  } */
+/* 
+ for (var i = 0; i < newEvent.length; i++) {
+   var hourValue = newEvent[i];
+   var tr = $("tr")
+   console.log(tr.attr(value));
+   /* if (hourValue == tr.hasAttr(value)) */
+   
+  //} 
 })
+};
+
+     
 });
-
-/* some */;
-
-/* }); */
 
       
