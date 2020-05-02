@@ -61,67 +61,48 @@ $("h1").text(newdate);
 
     $('h2').text(hour + ':' + minute +  xm );
   
-}
+  }
 
-//this is code for the modal window
+
+//Clicking a time-block opens a modal.
+
 // Get the modal
 var modal = $("#myModal");
-
-/* var timeSlot = $("td") */
-// Get the button that opens the modal
-/* function newEvent () { */
-$("input").focusin(function() {
-  $( this ).find( "span" ).css( "display", "inline" ).fadeOut( 1000 );
-  /* modal.style.display = "block"; */
+$("td").focusin(function(){
+  modal.css('display', 'block');
 });
 
-
-// Get the <span> element that closes the modal
-var span = $("span");
-
-// When the user clicks on the button, open the modal
-/* btn.onclick = function() {
-  modal.style.display = "block";
-} */
-/* btn.click(function() {
-  modal.style.display = "block";
-})  */
-
 // When the user clicks on <span> (x), close the modal
-span.click(function() {
-  modal.style.display = "none";
-}) 
+$("span").focusin(function(){
+  modal.css('display', 'none');
+});
 
-// When the user clicks anywhere outside of the modal, close it
- $(window).click(function(e) {
- if (e.target == modal) {
-    modal.style.display = "none";
-  }})
+//figure out how to close modal when you click anywhere. Not working
 
-//When we click a time-block, a form to enter a new event pops up.
-function addEvent() {
+
+
+
   $("#add-event").on("click", function(event) {
   event.preventDefault();
   //declare an empty array to eliminate repetition
   var newEvent = [];
 
- /*  var eventHour = $("#event-hour").val().trim();
-  var eventMinutes = $("#event-minutes").val().trim(); */
+  var eventHour = $("#event-hour").val().trim();
+  var eventMinutes = $("#event-minutes").val().trim(); 
   var eventName = $("#event-name").val().trim();
   var eventDetails = $("#event-details").val().trim();
 
-  newEvent.push(/* eventHour, eventMinutes,  */eventName, eventDetails);
+  newEvent.push(eventHour, eventMinutes, eventName, eventDetails);
   console.log(newEvent);
-/* 
- for (var i = 0; i < newEvent.length; i++) {
-   var hourValue = newEvent[i];
-   var tr = $("tr")
-   console.log(tr.attr(value));
-   /* if (hourValue == tr.hasAttr(value)) */
+
+ /*  var entryString = newEvent.join(",");
+  console.log(entryString); */
+  $("td.event").text(newEvent[2] + " " + newEvent[3])
+  });
    
   //} 
-})
-};
+
+
 
      
 });

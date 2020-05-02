@@ -26,50 +26,50 @@
             <table>
                 <tr id="8AM" value="8">
                     <td class="hour">8:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
                 <tr id="9AM" value="9">
                     <td class="hour">9:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
                 <tr id="10AM" value="10">
                     <td class="hour">10:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="11AM" value="11">
                     <td class="hour">11:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="12PM" value="12">
                     <td class="hour">12:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="1PM" value="1">
                     <td class="hour">1:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="2PM" value="2">
                     <td class="hour" >2:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="3PM" value="3">
                     <td class="hour">3:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="4PM" value="4">
                     <td class="hour">4:00 </td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
 
                 <tr id="5PM" value="5">
                     <td class="hour">5:00</td>
-                    <td class="event"><input></td>
+                    <td class="event" tabindex="-1"></td>
                 </tr>
             </table>
         </container>
@@ -80,16 +80,17 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close" tabindex="-1">&times;</span>
       <form id="my-form">
-        Event Name:<br>
-        <input id="event-name" type="text" name="name-of-event" value="name-of-event">
-        <br>
         Event Time<br>
         <input id="event-hour" type="text" name="event-hour" value="00">
         :
         <input id="event-minutes" type="text" name="event-minute" value="00">
         <br>
+        Event Name:<br>
+        <input id="event-name" type="text" name="name-of-event" value="name-of-event">
+        <br>
+        
         Event Details:<br>
         <input id="event-details" type="text" name="event-details" value="event-details">
         <br><br>
