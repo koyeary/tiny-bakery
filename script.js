@@ -101,12 +101,7 @@ $("#add-event").on("click", function(event) {
   var eventDetails = $("#event-details").val().trim();
 
   var storedEvent = newEvent.push(eventName, eventTime, eventDetails);
-
-  localStorage.setItem("New Event", storedEvent);
-  var eventObj = localStorage.getItem("New Event");
-  var parsedObj = JSON.parse(eventObj);
-
-  console.log(eventObj);
+  console.log(storedEvent);
   //clear the array variable after every entry to prevent repetition.
   var newEvent = [];
  /*  for (var i = 0; i < newEvent.length; i++) {
