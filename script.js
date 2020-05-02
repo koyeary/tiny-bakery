@@ -2,6 +2,7 @@ $(document).ready(function() {
     console.log("ready");
     clockUpdate();
     setInterval(clockUpdate, 1000);
+
     
 //Rendering date in "day name, month name + date number, year" format.
     var dateObj = new Date();
@@ -94,24 +95,23 @@ span.click(function() {
 //When we hit the submit button, the form input is stored in local storage.
 $("#add-event").on("click", function(event) {
   event.preventDefault();
+  //declare an empty array to eliminate repetition
   var newEvent = [];
 
-  var eventTime = $("#event-time").val().trim();
+  var eventHour = $("#event-hour").val().trim();
+  var eventMinutes = $("#event-minutes").val().trim();
   var eventName = $("#event-name").val().trim();
   var eventDetails = $("#event-details").val().trim();
 
-  var storedEvent = newEvent.push(eventName, eventTime, eventDetails);
-  console.log(storedEvent);
-  //clear the array variable after every entry to prevent repetition.
-  var newEvent = [];
- /*  for (var i = 0; i < newEvent.length; i++) {
-    var eventInfo = newEvent[i];
-    $("") */
-    //get field by boolean newEvent[0] = 
-    //
-    
-  })
+  newEvent.push(eventHour, eventMinutes, eventName, eventDetails);
+  console.log(newEvent);
+
+ /* for (var i = 0; i < newEvent.length; i++) {
+   if (newEvent[1] == 
+  
+  } */
 })
+});
 
 /* some */;
 
