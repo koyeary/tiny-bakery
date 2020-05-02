@@ -1,125 +1,110 @@
-$(document).ready(function() {
-    console.log("ready");
-    clockUpdate();
-    setInterval(clockUpdate, 1000);
-    
-//Rendering date in "day name, month name + date number, year" format.
-    var dateObj = new Date();
-    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var  day = weekdays[dateObj.getDay()];
+<!DOCTYPE html>
+<html lang="en">
 
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <title>Document</title>
+</head>
 
-    var date = dateObj.getDate();   
-    var month = months[dateObj.getMonth()];
-    var year = dateObj.getUTCFullYear();
-    
-    var newdate = day + ", " + month + " " + date + ", " + year;
+<body>
+    <header>Daily Calendar</header>
+    <section>
+        <h1>Date will display here.</h1>
+        <h2>Time will display here</h2>
+    </section>
+    <button id="myBtn">enter event</button> <!-- <div id="event-form" style="display:none;">hour, minute, am/pm</div> -->
+    <main>
+        <container>
+            <section>
+                key (past, present, future)
+            </section>
+            <table>
+                <tr id="8AM" value="8">
+                    <td class="hour">8:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
+                <tr id="9AM" value="9">
+                    <td class="hour">9:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
+                <tr id="10AM" value="10">
+                    <td class="hour">10:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-//Populate the h1 element with the rendered date
+                <tr id="11AM" value="11">
+                    <td class="hour">11:00</td>
+                    <td class="event">this is an example of something written in the event</td>
+                </tr>
 
-$("h1").text(newdate);    
+                <tr id="12PM" value="12">
+                    <td class="hour">12:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-//Rendering the current time in Hours:Minutes AM/PM (standard time), populating in "h2" element    
+                <tr id="1PM" value="13">
+                    <td class="hour">1:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-  function clockUpdate() {
-    var date = new Date();
+                <tr id="2PM" value="14">
+                    <td class="hour" >2:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-  //Function to display the zero when minutes are less than 10
-  function addZero(x) {
-      if (x < 10) {
-        return x = '0' + x;
-      } else {
-        return x;
-      }
-    } 
+                <tr id="3PM" value="15">
+                    <td class="hour">3:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-    //translate hours into standard time
-    function standardTime(x) {
-      if (x > 12) {
-        return x = x - 12;
-      } else if (x == 0) {
-        return x = 12;
-      } else {
-        return x;
-      }
-    }
-    //display AM or PM 
-    function renderMeridiem() {
-      if (getTime > 11) {
-        return " PM"
-      } else {
-        return " AM"
-      }
-    }  
+                <tr id="4PM" value="16">
+                    <td class="hour">4:00 </td>
+                    <td class="event"><ul></ul></td>
+                </tr>
 
-    var getTime = date.getHours();
-    var hour = /* addZero */(standardTime(getTime));
-    var minute = addZero(date.getMinutes());
-    var xm = renderMeridiem();
+                <tr id="5PM" value="17">
+                    <td class="hour">5:00</td>
+                    <td class="event"><ul></ul></td>
+                </tr>
+            </table>
+        </container>
 
-    $('h2').text(hour + ':' + minute +  xm );
+<!--Modal for form element will go here-->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="my-form">
+        Event Name:<br>
+        <input id="event-name" type="text" name="name-of-event" value="name-of-event">
+        <br>
+        Event Time<br>
+        <input id="event-time" type="text" name="event-time" value="event-time">
+        <br>
+        Event Details:<br>
+        <input id="event-details" type="text" name="event-details" value="event-details">
+        <br><br>
+        <input id="add-event" type="submit" value="Submit">
+       </form>
+        <p> Click Submit button to get all the forms elements and their values</p>
+    </div>
   
-}
-
-//this is code for the modal window
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = $("#myBtn");
-
-// Get the <span> element that closes the modal
-var span = $("span");
-
-// When the user clicks on the button, open the modal
-/* btn.onclick = function() {
-  modal.style.display = "block";
-} */
-btn.click(function() {
-  modal.style.display = "block";
-})
-
-// When the user clicks on <span> (x), close the modal
-span.click(function() {
-  modal.style.display = "none";
-}) 
-
-// When the user clicks anywhere outside of the modal, close it
- $(window).click(function(e) {
- if (e.target == modal) {
-    modal.style.display = "none";
-  }})
-
-//When we hit the submit button, the form input is stored in local storage.
-$("#add-event").on("click", function(event) {
-  event.preventDefault();
-  var newEvent = [];
-
-  var eventTime = $("#event-time").val().trim();
-  var eventName = $("#event-name").val().trim();
-  var eventDetails = $("#event-details").val().trim();
-
-  var storedEvent = newEvent.push(eventName, eventTime, eventDetails);
-
-  localStorage.setItem("New Event", storedEvent);
-  var eventObj = localStorage.getItem("New Event");
-  var parsedObj = JSON.parse(eventObj);
-
-  console.log(eventObj);
-  //clear the array variable after every entry to prevent repetition.
-  var newEvent = [];
- /*  for (var i = 0; i < newEvent.length; i++) {
-    var eventInfo = newEvent[i];
-    $("") */
-    //get field by boolean newEvent[0] = 
-    //
+  </div>
     
-  })
-})
+    </main>
+   
+    <footer>
+        This is the footer
+    </footer>
 
-/* some */;
+  
+</body>
 
-/* }); */
-
-      
+</html>
