@@ -91,7 +91,6 @@ for (let i = 0; i < myNodes.length; i++) {
   array.push(element);
 }
 
-
 var theOdds = [];
 
 function odds() {
@@ -106,16 +105,27 @@ function odds() {
   }
 }
 
+
 odds();
-console.log(theOdds);
-/* for (let i = 0; i < myNodes.length; i++) {
-  const element = myNodes[i];
-  if (eventHour === ) {
-    $(element).text("<p>" + eventName +  "<br>" + eventDetails + "</p>")
+
+var newOdds = [];
+for (let i = 0; i < theOdds.length; i++) {
+  const n = theOdds[i];
+  const getId = $(n).attr('id');
+  console.log(getId);
+  newOdds.push(getId);
+}
+
+console.log(newOdds);
+
+for (let i = 0; i < newOdds.length; i++) {
+  const e = newOdds[i];
+  if (eventHour === e) {
+    console.log(eventHour + e);
   }
   
-}  
-  */
+} 
+
 
 
  //tr td:nth-child(2).attr('id');
