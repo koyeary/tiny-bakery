@@ -77,26 +77,48 @@ $("tr").focusin(function(){
   console.log(eventHour);
 
   
-
+  var array = [];
 $("#add-event").on("click", function(event) {
   event.preventDefault(); 
   //declare an empty array to eliminate repetition
   //var newEvent = [];
   console.log("submitted");
 
-var myNodes  
+var myNodes = $("td");
+
 for (let i = 0; i < myNodes.length; i++) {
   const element = myNodes[i];
-  var entryTag = "tr#" + eventHour;
-  if ("tr#" + entryTag === myNodes[i]) {
-    $(myNodes[i]).text("<p>" + eventName +  "<br>" + eventDetails + "</p>")
+  array.push(element);
+}
+
+
+var theOdds = [];
+
+function odds() {
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    if (i % 2 == 0) {
+      console.log(element);
+    }
+    else {
+      theOdds.push(element);
+    }
+  }
+}
+
+odds();
+console.log(theOdds);
+/* for (let i = 0; i < myNodes.length; i++) {
+  const element = myNodes[i];
+  if (eventHour === ) {
+    $(element).text("<p>" + eventName +  "<br>" + eventDetails + "</p>")
   }
   
 }  
+  */
 
 
-
-
+ //tr td:nth-child(2).attr('id');
 
 /* }); */
  var timeArray = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
