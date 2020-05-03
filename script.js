@@ -39,7 +39,7 @@ $("h1").text(newdate);
     function standardTime(x) {
       if (x > 12) {
         return x = x - 12;
-      } else if (x == 0) {
+      } else if (x === 0) {
         return x = 12;
       } else {
         return x;
@@ -48,9 +48,9 @@ $("h1").text(newdate);
     //display AM or PM 
     function renderMeridiem() {
       if (getTime > 11) {
-        return " PM"
+        return " PM";
       } else {
-        return " AM"
+        return " AM";
       }
     }  
 
@@ -68,43 +68,90 @@ $("h1").text(newdate);
 
 // Get the modal
 var modal = $("#myModal");
-$("td").focusin(function(){
+$("tr").focusin(function(){
   modal.css('display', 'block');
+  /* var select = $(document.activeElement); */
+  var eventHour = $(document.activeElement).attr('id');
+  var eventName = $("#event-name").val().trim();
+  var eventDetails = $("#event-details").val().trim();
+  console.log(eventHour);
+
+  
+
+$("#add-event").on("click", function(event) {
+  event.preventDefault(); 
+  //declare an empty array to eliminate repetition
+  //var newEvent = [];
+  console.log("submitted");
+
+var myNodes  
+for (let i = 0; i < myNodes.length; i++) {
+  const element = myNodes[i];
+  var entryTag = "tr#" + eventHour;
+  if ("tr#" + entryTag === myNodes[i]) {
+    $(myNodes[i]).text("<p>" + eventName +  "<br>" + eventDetails + "</p>")
+  }
+  
+}  
+
+
+
+
+
+/* }); */
+ var timeArray = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
+/*  for (let i = 0; i < timeArray.length; i++) {
+   const matchID = timeArray[i];
+   console.log(matchID);
+ 
+ if (eventHour === matchID[i]) {
+   $(makeTag).text("testing");
+ /*   $("<p>").appendTo($( makeTag + "td:nth-child(2)"));
+   $(this).text(eventHour + ":" + eventMinutes + "</p>" + eventName + "<p>" + eventDetails); */
+ });
+ });
+
+ 
+/* tdContent = "<p>" + eventHour + ":" + eventMinutes + "</p>" + eventName + "<p>" + eventDetails + "</p>"; */
+
+/* console.log(tdContent); */
+/* myObj.time = eventHour + ":" + eventMinutes;
+console.log('time: ' + eventHour + ':' + eventMinutes);
+myObj.name = eventName;
+console.log('name: ' + eventName);
+myObj.details = eventDetails;
+console.log('details: ' + eventDetails);
+
+ */
+/* console.log(myObj);  */
+/* $( document.activeElement ).focus(function(){
+  $("#myModal").css('display', 'none');
+  console.log("working");
+}); */
+ 
+
+/* $(myNodes.select).append("<p>" + eventHour + ":" + eventMinutes + "<br>" + eventName + "<br>" + eventDetails + "</p>"); */
+
+
 });
 
+//console.log(select); //use this to plug in hour of the time to modal and appends  
+
 // When the user clicks on <span> (x), close the modal
-$("span").focusin(function(){
-  modal.css('display', 'none');
-});
 
 //figure out how to close modal when you click anywhere. Not working
 
 
 
-
-  $("#add-event").on("click", function(event) {
-  event.preventDefault();
-  //declare an empty array to eliminate repetition
-  var newEvent = [];
-
-  var eventHour = $("#event-hour").val().trim();
-  var eventMinutes = $("#event-minutes").val().trim(); 
-  var eventName = $("#event-name").val().trim();
-  var eventDetails = $("#event-details").val().trim();
-
-  newEvent.push(eventHour, eventMinutes, eventName, eventDetails);
-  console.log(newEvent);
-
- /*  var entryString = newEvent.join(",");
-  console.log(entryString); */
-  $("td.event").text(newEvent[2] + " " + newEvent[3])
-  });
-   
-  //} 
+//possible solution: if the div value is attached directly to the onclick event the entry can be easily appended to that value
 
 
 
-     
-});
+/* function closeModal() {
+  modal.css('display', 'none'
+}
+ */
+
+
 
       

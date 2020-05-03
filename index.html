@@ -17,62 +17,62 @@
         <h1>Date will display here.</h1>
         <h2>Time will display here</h2>
     </section>
-   <!-- <button id="myBtn">enter event</button>  <div id="event-form" style="display:none;">hour, minute, am/pm</div> -->
+   <!-- <button id="myBtn">enter event</button>  <div id="event-form" style="display:noname;">hour, minute, /</div> -->
     <main>
-        <container>
+        <containamer>
             <section>
                 key (past, present, future)
             </section>
             <table>
-                <tr id="8AM" value="8">
-                    <td class="hour">8:00</td>
-                    <td class="event" tabindex="-1"></td>
+                <tr id="8" value="0" tabindex="-1">
+                    <td class="hour" >8:00</td>
+                    <td id="8" class="event"></td>
                 </tr>
-                <tr id="9AM" value="9">
-                    <td class="hour">9:00</td>
-                    <td class="event" tabindex="-1"></td>
+                <tr id="9" value="1" tabindex="-1">
+                    <td class="hour" >9:00</td>
+                    <td id="9" class="event"></td>
                 </tr>
-                <tr id="10AM" value="10">
+                <tr id="10" value="2" tabindex="-1">
                     <td class="hour">10:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="10" class="event"></td>
                 </tr>
 
-                <tr id="11AM" value="11">
+                <tr id="11" value="3" tabindex="-1">
                     <td class="hour">11:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="11" class="event"></td>
                 </tr>
 
-                <tr id="12PM" value="12">
+                <tr id="12" value="4" tabindex="-1">
                     <td class="hour">12:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="12" class="event"></td>
                 </tr>
 
-                <tr id="1PM" value="1">
+                <tr id="1" value="5" tabindex="-1">
                     <td class="hour">1:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="1" class="event"></td>
                 </tr>
 
-                <tr id="2PM" value="2">
+                <tr id="2" value="6" tabindex="-1">
                     <td class="hour" >2:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="2" class="event"></td>
                 </tr>
 
-                <tr id="3PM" value="3">
+                <tr id="3" value="7" tabindex="-1">
                     <td class="hour">3:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="3" class="event"></td>
                 </tr>
 
-                <tr id="4PM" value="4">
+                <tr id="4" value="8" tabindex="-1">
                     <td class="hour">4:00 </td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="4" class="event"></td>
                 </tr>
 
-                <tr id="5PM" value="5">
+                <tr id="5" value="9" tabindex="-1">
                     <td class="hour">5:00</td>
-                    <td class="event" tabindex="-1"></td>
+                    <td id="5" class="event"></td>
                 </tr>
             </table>
-        </container>
+        </containamer>
 
 <!--Modal for form element will go here-->
 <!-- The Modal -->
@@ -80,14 +80,12 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close" tabindex="-1">&times;</span>
+ <!--      <button id="close">close</button> -->
+      <span class="close">&times;</span> 
       <form id="my-form">
-        Event Time<br>
-        <input id="event-hour" type="text" name="event-hour" value="00">
-        :
-        <input id="event-minutes" type="text" name="event-minute" value="00">
-        <br>
-        Event Name:<br>
+<!--DOM text display event time, ask user to select event type-->
+
+        Event name:<br>
         <input id="event-name" type="text" name="name-of-event" value="name-of-event">
         <br>
         
