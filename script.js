@@ -64,108 +64,64 @@ $("h1").text(newdate);
   }
 
 
+timeSlot = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5]
+
+
+/* localStorage.setItem('tasks', tasks);
+localStorage.setItem('timeSlot', timeSlot); */
+
+
+
 //Clicking a time-block opens a modal.
 
 // Get the modal
 var modal = $("#myModal");
 $("tr").focusin(function(){
   modal.css('display', 'block');
-  /* var select = $(document.activeElement); */
-  var eventHour = $(document.activeElement).attr('id');
-  var eventName = $("#event-name").val().trim();
-  var eventDetails = $("#event-details").val().trim();
-  console.log(eventHour);
+  var time = $(document.activeElement).attr('id');
+  /* var timeIndex = time - 8; */
+ 
 
+  //var array = [];
   
-  var array = [];
 $("#add-event").on("click", function(event) {
   event.preventDefault(); 
+
+  
+  var task = $("#event-name").val().trim();
+  var detail = $("#event-details").val().trim();
+ /*  var id = "'td id=" + timeIndex + "'";  */
+  var id = "td#" + time;
+ /*  var getNthChild = timeSlot[i]; */
+  var tasks = {
+    "id" : id,
+    "task" : task,
+    "details" : detail,
+    "time" : time
+  }
+  localStorage.setItem("tasks", task);
   //declare an empty array to eliminate repetition
   //var newEvent = [];
   console.log("submitted");
+  console.log(tasks);
 
-var myNodes = $("td");
+  var myString = $(tasks.id); 
 
-for (let i = 0; i < myNodes.length; i++) {
-  const element = myNodes[i];
-  array.push(element);
-}
-
-var theOdds = [];
-
-function odds() {
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    if (i % 2 == 0) {
-      console.log(element);
-    }
-    else {
-      theOdds.push(element);
-    }
-  }
-}
+ console.log(myString);
+ myString.append("<p>"  + tasks.task + "<br>" + tasks.details + "</p>");
+/*  myString.innerHTML("<p>"  + tasks.task + "<br>" + tasks.details + "</p>") */
 
 
-odds();
-
-var newOdds = [];
-for (let i = 0; i < theOdds.length; i++) {
-  const n = theOdds[i];
-  const getId = $(n).attr('id');
-  console.log(getId);
-  newOdds.push(getId);
-}
-
-console.log(newOdds);
-
-for (let i = 0; i < newOdds.length; i++) {
-  const e = newOdds[i];
-  if (eventHour === e) {
-    console.log(eventHour + e);
-  }
   
-} 
+}); 
 
-
-
- //tr td:nth-child(2).attr('id');
-
-/* }); */
- var timeArray = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
-/*  for (let i = 0; i < timeArray.length; i++) {
-   const matchID = timeArray[i];
-   console.log(matchID);
- 
- if (eventHour === matchID[i]) {
-   $(makeTag).text("testing");
- /*   $("<p>").appendTo($( makeTag + "td:nth-child(2)"));
-   $(this).text(eventHour + ":" + eventMinutes + "</p>" + eventName + "<p>" + eventDetails); */
  });
- });
-
- 
-/* tdContent = "<p>" + eventHour + ":" + eventMinutes + "</p>" + eventName + "<p>" + eventDetails + "</p>"; */
-
-/* console.log(tdContent); */
-/* myObj.time = eventHour + ":" + eventMinutes;
-console.log('time: ' + eventHour + ':' + eventMinutes);
-myObj.name = eventName;
-console.log('name: ' + eventName);
-myObj.details = eventDetails;
-console.log('details: ' + eventDetails);
-
- */
-/* console.log(myObj);  */
-/* $( document.activeElement ).focus(function(){
-  $("#myModal").css('display', 'none');
-  console.log("working");
-}); */
- 
-
-/* $(myNodes.select).append("<p>" + eventHour + ":" + eventMinutes + "<br>" + eventName + "<br>" + eventDetails + "</p>"); */
-
-
 });
+
+ 
+
+
+
 
 //console.log(select); //use this to plug in hour of the time to modal and appends  
 

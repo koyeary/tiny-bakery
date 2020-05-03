@@ -22,14 +22,11 @@ tr {
   background-color: #4CAF50;
   color: white;
 }
-/* 
-td .hour {
-    width: 10px;
-}  
 
-td .event {
-    width: 990px;
-} */
+td .hour{
+ font-size: 20px;
+ font-weight: bold;
+}
 
 /* The Modal (background) */
 .modal {
