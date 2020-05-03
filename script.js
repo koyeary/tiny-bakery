@@ -1,39 +1,40 @@
-$(document).ready(function() {
-    console.log("ready");
-    clockUpdate();
-    setInterval(clockUpdate, 1000);
+$(document).ready(function () {
+  console.log("ready");
+  //get date and time on load
+  clockUpdate();
+  setInterval(clockUpdate, 1000);
 
-    
-//Rendering date in "day name, month name + date number, year" format.
-    var dateObj = new Date();
-    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var  day = weekdays[dateObj.getDay()];
 
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  //Rendering date in "day name, month name + date number, year" format.
+  var dateObj = new Date();
+  var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var day = weekdays[dateObj.getDay()];
 
-    var date = dateObj.getDate();   
-    var month = months[dateObj.getMonth()];
-    var year = dateObj.getUTCFullYear();
-    
-    var newdate = day + ", " + month + " " + date + ", " + year;
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-//Populate the h1 element with the rendered date
+  var date = dateObj.getDate();
+  var month = months[dateObj.getMonth()];
+  var year = dateObj.getUTCFullYear();
 
-$("h1").text(newdate);    
+  var newdate = day + ", " + month + " " + date + ", " + year;
 
-//Rendering the current time in Hours:Minutes AM/PM (standard time), populating in "h2" element    
+  //Populate the h1 element with the rendered date
+
+  $("h1").text(newdate);
+
+  //Rendering the current time in Hours:Minutes AM/PM (standard time), populating in "h2" element    
 
   function clockUpdate() {
     var date = new Date();
 
-  //Function to display the zero when minutes are less than 10
-  function addZero(x) {
+    //Function to display the zero when minutes are less than 10
+    function addZero(x) {
       if (x < 10) {
         return x = '0' + x;
       } else {
         return x;
       }
-    } 
+    }
 
     //translate hours into standard time
     function standardTime(x) {
@@ -52,93 +53,82 @@ $("h1").text(newdate);
       } else {
         return " AM";
       }
-    }  
+    }
+
+    /* function colorCode() {
+      if (getTime > 
+    } */
 
     var getTime = date.getHours();
-    var hour = /* addZero */(standardTime(getTime));
+    var hour = standardTime(getTime);
     var minute = addZero(date.getMinutes());
     var xm = renderMeridiem();
 
-    $('h2').text(hour + ':' + minute +  xm );
-  
+    $('h2').text(hour + ':' + minute + xm);
+
   }
 
 
-timeSlot = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5]
+  // Clicking on a time-box retrieves the active element and opens a modal
+  var modal = $("#myModal");
+  $("tr").focusin(function () {
+    modal.css('display', 'block');
+    //store active element in a variable so that it can be used to grab the element id  
+    var time = $(document.activeElement).attr('id');
+
+    //clicking on span element closes the modal
+    $("span").on("click", function() {
+      modal.css('display', 'none');
+    }) 
+
+    //the form is here
+    $("#add-event").on("click", function (event) {
+      event.preventDefault();
+      //save input values
+      var task = $("#event-name").val().trim();
+      var detail = $("#event-details").val().trim();
+      //use time variable to write attribute
+      var id = "td#" + time;
+      //the task object stores input variables
+      var entries = {
+        "id": id,
+        "task": task,
+        "details": detail,
+        "time": time
+      }
+
+      /* localStorage.setItem("entries", JSON.stringify(entries)); */
+      localStorage.setItem("tasks", JSON.stringify(task, detail, time));
+
+      var myString = $(entries.id);
+      //Insert form inputs into the selected timebox
+      myString.append("<p>" + entries.task + "<br>" + entries.details + "</p>");
 
 
-/* localStorage.setItem('tasks', tasks);
-localStorage.setItem('timeSlot', timeSlot); */
 
 
+    });
 
-//Clicking a time-block opens a modal.
+   
+ /*    function loadTasks() {
+      var tasks = JSON.parse(localStorage.getItem("tasks"));
+      if (tasks != null) {
+        for (let i = 0; i < tasks.length; i++) {
+          var id = "td#" + time;
+          var htmlString = ("<p>" + tasks.task + "<br>" + tasks.details + "</p>");
+          $(id).append(htmlString);
+        }
+      }
+    }
+ */
 
-// Get the modal
-var modal = $("#myModal");
-$("tr").focusin(function(){
-  modal.css('display', 'block');
-  var time = $(document.activeElement).attr('id');
-  /* var timeIndex = time - 8; */
- 
+/*   loadTasks(); */
 
-  //var array = [];
-  
-$("#add-event").on("click", function(event) {
-  event.preventDefault(); 
+  });
 
-  
-  var task = $("#event-name").val().trim();
-  var detail = $("#event-details").val().trim();
- /*  var id = "'td id=" + timeIndex + "'";  */
-  var id = "td#" + time;
- /*  var getNthChild = timeSlot[i]; */
-  var tasks = {
-    "id" : id,
-    "task" : task,
-    "details" : detail,
-    "time" : time
-  }
-  localStorage.setItem("tasks", task);
-  //declare an empty array to eliminate repetition
-  //var newEvent = [];
-  console.log("submitted");
-  console.log(tasks);
-
-  var myString = $(tasks.id); 
-
- console.log(myString);
- myString.append("<p>"  + tasks.task + "<br>" + tasks.details + "</p>");
-/*  myString.innerHTML("<p>"  + tasks.task + "<br>" + tasks.details + "</p>") */
-
-
-  
-}); 
-
- });
 });
 
- 
 
-
-
-
-//console.log(select); //use this to plug in hour of the time to modal and appends  
-
-// When the user clicks on <span> (x), close the modal
-
-//figure out how to close modal when you click anywhere. Not working
-
-
-
-//possible solution: if the div value is attached directly to the onclick event the entry can be easily appended to that value
-
-
-
-/* function closeModal() {
-  modal.css('display', 'none'
-}
- */
 
 
 
