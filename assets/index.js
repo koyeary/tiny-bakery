@@ -3,6 +3,9 @@ $(document).ready(function () {
 
   //Initialize material collapsible list items
   $('.collapsible').collapsible();
+
+  //Populate the h1 element with the rendered date
+  $("h1").text(moment().format('LLL'));
   
   function timeUpdate() {
 
@@ -10,7 +13,16 @@ $(document).ready(function () {
     var currentHour = moment().hours();
 
     $('li').each(function() {
-     // var calendarHour = parseInt($(this).)
+     var calendarHour = parseInt($(this).attr('id'));
+
+     if (calendarHour > currentHour) {
+       $(this).addClass('teal accent-3');
+     } else if (calendarHour < currentHour) {
+      $(this).addClass('teal lighten-5')
+    } else if (calendarHour === currentHour) {
+      $(this).addClass('text-darken-2');
+    }
+
     })
   }
 
