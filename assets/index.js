@@ -1,8 +1,21 @@
 $(document).ready(function () {
   console.log("ready");
+
+  //Initialize material collapsible list items
   $('.collapsible').collapsible();
-  //get date and time on load
-  clockUpdate();
+  
+  function timeUpdate() {
+
+    //Get the current hour
+    var currentHour = moment().hours();
+
+    $('li').each(function() {
+     // var calendarHour = parseInt($(this).)
+    })
+  }
+
+
+/*   clockUpdate();
   setInterval(clockUpdate, 1000);
 
 
@@ -58,7 +71,7 @@ $(document).ready(function () {
 
     /* function colorCode() {
       if (getTime > 
-    } */
+    } 
 
     var getTime = date.getHours();
     var hour = standardTime(getTime);
@@ -98,7 +111,7 @@ $(document).ready(function () {
         "time": time
       }
 
-      /* localStorage.setItem("entries", JSON.stringify(entries)); */
+       localStorage.setItem("entries", JSON.stringify(entries)); 
       localStorage.setItem("tasks", JSON.stringify(task, detail, time));
 
       var myString = $(entries.id);
@@ -111,7 +124,7 @@ $(document).ready(function () {
     });
 
    
- /*    function loadTasks() {
+    function loadTasks() {
       var tasks = JSON.parse(localStorage.getItem("tasks"));
       if (tasks != null) {
         for (let i = 0; i < tasks.length; i++) {
@@ -121,11 +134,11 @@ $(document).ready(function () {
         }
       }
     }
- */
+ 
 
-/*   loadTasks(); */
+   loadTasks(); 
 
-  });
+  }); */
 
 });
 

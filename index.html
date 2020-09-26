@@ -4,104 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script type="text/javascript" src="./script.js"></script>
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--     <link rel="stylesheet" type="text/css" href="assets/style.css"> -->
+    <title>Daily Calendar</title>
 </head>
 
 <body>
     <header>Daily Calendar</header>
     <section>
-        <h1>Date will display here.</h1>
-        <h2>Time will display here</h2>
+        <h1>Display date here.</h1>
+        <h2>Display time here.</h2>
     </section>
-   <!-- <button id="myBtn">enter event</button>  <div id="event-form" style="display:noname;">hour, minute, /</div> -->
+
     <main>
-        <containamer>
-            <table>
-                <tr>
-                    <td class="hour"></td> 
-                    <td id="8" tabindex="-1"></td>
-                </tr>
-                <tr>
-                    <td class="hour" id="9" tabindex="-1">9:00</td>
-                   
-                </tr>
-                <tr>
-                    <td class="hour" id="10" tabindex="-1">10:00</td>
-                  
-                </tr>
+        <div class="container">
+            <ul class='collapsible'>
+                <li id='8'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>8:00AM</div>
+                    <div class="collapsible-body">Event details</div>
 
-                <tr>
-                    <td class="hour" id="11" tabindex="-1">11:00</td>
-                  
-                </tr>
+                </li>
+                <li id='9'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>9:00AM</div>
+                    <div class="collapsible-body">Event details</div>
 
-                <tr>
-                    <td class="hour" id="12" tabindex="-1">12:00</td>
-                   
-                </tr>
+                </li>
+                <li id='10'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>10:00AM</div>
+                    <div class="collapsible-body">Event details</div>
 
-                <tr>
-                    <td class="hour" id="13" tabindex="-1">1:00</td>
-                 
-                </tr>
+                </li>
+                <li id='11'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>11:00AM</div>
+                    <div class="collapsible-body">Event details</div>
 
-                <tr>
-                    <td class="hour" id="14" tabindex="-1">2:00</td>
-                   
-                </tr>
+                </li>
 
-                <tr>
-                    <td class="hour" id="15" tabindex="-1">3:00</td>
-                  
-                </tr>
+                <li id='12'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>12:00PM</div>
+                    <div class="collapsible-body">Event details</div>
 
-                <tr>
-                    <td class="hour" id="16" tabindex="-1">4:00 </td>
-                   
-                </tr>
+                </li>
 
-                <tr>
-                    <td class="hour" id="17" tabindex="-1">5:00</td>
-                   
-                </tr>
-            </table>
-        </containamer>
+                <li id='13'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>1:00PM</div>
+                    <div class="collapsible-body">Event details</div>
 
-<!--Modal for form element will go here-->
-<!-- The Modal -->
-<div id="myModal" class="modal">
+                </li>
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span> 
-      <form id="my-form">
-<!--DOM text display event time, ask user to select event type-->
+                <li id='14'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>2:00PM</div>
+                    <div class="collapsible-body">Event details</div>
 
-        To-Do:<br>
-        <input id="event-name" type="text" name="To-Do:" value="event-name">
-        <br>
-        
-        Details:<br>
-        <input id="event-details" type="text" name="Details:" value="event-details">
-        <br><br>
-        <input id="add-event" type="submit" value="Submit">
-       </form>
-        <p> Click Submit button to get all the forms elements and their values</p>
-    </div>
-  
-  </div>
-    
+                </li>
+
+                <li id='15'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>3:00PM</div>
+                    <div class="collapsible-body">Event details</div>
+
+                </li>
+
+                <li id='16'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>4:00PM</div>
+                    <div class="collapsible-body">Event details</div>
+
+                </li>
+
+                <li id='17'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>5:00PM</div>
+                    <div class="collapsible-body">Event details</div>
+
+                </li>
+
+                <li id='18'>
+                    <div class="collapsible-header"><i class="large material-icons">access_time</i>6:00PM</div>
+                    <div class="collapsible-body">Event details</div>
+
+                </li>
+        </div>
+
+        <!--Modal for form element will go here-->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="my-form">
+                    <!--DOM text display event time, ask user to select event type-->
+
+                    To-Do:<br>
+                    <input id="event-name" type="text" name="To-Do:" value="event-name">
+                    <br>
+
+                    Details:<br>
+                    <input id="event-details" type="text" name="Details:" value="event-details">
+                    <br><br>
+                    <input id="add-event" type="submit" value="Submit">
+                </form>
+                <p> Click Submit button to get all the forms elements and their values</p>
+            </div>
+
+        </div>
+
     </main>
-   
+
     <footer>
         This is the footer
     </footer>
-
-  
+    <script src="assets/index.js"></script>
 </body>
 
 </html>
