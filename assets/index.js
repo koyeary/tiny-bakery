@@ -1,18 +1,32 @@
 $(document).ready(function () {
+
   console.log("ready");
+  setTimeout(setClock());
 
   //Initialize material components
   $('.collapsible').collapsible();
-  $('.datepicker').datepicker();
 
   //Render the current date and time in the header
-  $("h2").text(moment().format('LTS'));
+  function setClock() {
+    var currentTime = moment().format('LLLL');
+    $("h2").text(currentTime);
+  }
 
   function codeTime() {
     //Get the current hour
     var currentHour = moment().hours();
+    console.log(currentHour);
+    var calendarHour = $('#8');
+    console.log(calendarHour);
 
-    $('.collapsible-header').each(function () {
+    $('li').each( function() {
+      var calendarHour = parseInt($(this).attr('value'));
+      var header = $('.collapsible-header');
+      if (currentHour > calendarHour) {
+        header.addClass('teal');
+      }
+    });
+   /*  $('.collapsible-header').each(function () {
       var calendarHour = parseInt($(this).attr('id'));
 
       if (calendarHour > currentHour) {
@@ -23,10 +37,11 @@ $(document).ready(function () {
         $(this).addClass('text-darken-2 z-depth-3');
       }
 
-    });
+    }); */
   }
 
-codeTime();
+  codeTime();
+
   /*   
   
   
