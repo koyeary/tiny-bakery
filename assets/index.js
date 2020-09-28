@@ -19,13 +19,11 @@ $(document).ready(function () {
 
     $('li').each( function() {
       var calendarHour = parseInt($(this).attr('value'));
-      console.log(calendarHour);
        if (currentHour > calendarHour) {
         $(`#header-${calendarHour}`).addClass('teal lighten-4');
       } else if (currentHour < calendarHour) {
         $(`#header-${calendarHour}`).addClass('teal');
       } else if (currentHour === calendarHour) {
-        console.log('now');
       } 
     });
   }
@@ -54,12 +52,14 @@ $(document).ready(function () {
       var id = 8;
       for (let i = 0; i < 11; i++) {
         var saved = localStorage.getItem(`${id}`);
-        //console.log(`${id}:00 ${saved}`);
-        $(`#header-${id}`).text(`${id}:00 ${saved}`);
-            id += 1;
-           //$('.name').innerHTML("i'm a few words in english");
-          }
+        if (localStorage.getItem(`${id}`) === null) {
+          console.log('null');
+        } else {
+        $(`#header-${id}`).text(`${id}:00 ${saved}`);  
+        }
+        id += 1;
       }
+    }
     });  
     
 /*     $(this.id).focusin(function () {
