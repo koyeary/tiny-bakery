@@ -12,18 +12,20 @@ $(document).ready(function () {
   function codeTime() {
     //start the clock here so that clock and timecode are updated at the same interval
     setClock();
-
+    loadCalendar();
     //Find the current time
     var currentHour = moment().hours();
     /* find the current minute to set for alert toast */ 
 
     $('li').each( function() {
       var calendarHour = parseInt($(this).attr('value'));
+      console.log(calendarHour);
        if (currentHour > calendarHour) {
-        $(`#${calendarHour}`).addClass('teal lighten-4');
+        $(`#header-${calendarHour}`).addClass('teal lighten-4');
       } else if (currentHour < calendarHour) {
-        $(`#${calendarHour}`).addClass('teal');
+        $(`#header-${calendarHour}`).addClass('teal');
       } else if (currentHour === calendarHour) {
+        console.log('now');
       } 
     });
   }
@@ -37,16 +39,29 @@ $(document).ready(function () {
    //function renderTime(time) {
     //localStorage.setItem(time); 
 
+//save input fields to local storage
      $('.btn').on('click', function() {
-      //var description = this.previousElementSibling;
       var time = this.id;
-      var text = $(`#description-${time}`).val();
-      console.log(text);
+      var description = $(`#description-${time}`).val();
+      var eventName = $(`#name-${time}`).val();
       
-      console.log(time);
-      //Focuses on description input
+      localStorage.setItem(time, [eventName, description]);
+      loadCalendar();
+      //Reload page and populate headers
     }); 
   
+     function loadCalendar() {
+      var id = 8;
+      for (let i = 0; i < 11; i++) {
+        var saved = localStorage.getItem(`${id}`);
+        //console.log(`${id}:00 ${saved}`);
+        $(`#header-${id}`).text(`${id}:00 ${saved}`);
+            id += 1;
+           //$('.name').innerHTML("i'm a few words in english");
+          }
+      }
+    });  
+    
 /*     $(this.id).focusin(function () {
 
     }) */
@@ -56,7 +71,7 @@ $(document).ready(function () {
 
 
 
-});
+
 
 
 
