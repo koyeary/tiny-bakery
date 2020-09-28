@@ -40,10 +40,11 @@ $(document).ready(function () {
 //save input fields to local storage
      $('.btn').on('click', function() {
       var time = this.id;
-      var description = $(`#description-${time}`).val();
+      var details = $(`#details-${time}`).val();
       var eventName = $(`#name-${time}`).val();
       
-      localStorage.setItem(time, [eventName, description]);
+      localStorage.setItem(`name-${time}`, eventName);
+      localStorage.setItem(`details-${time}`, details);
       loadCalendar();
       //Reload page and populate headers
     }); 
@@ -51,11 +52,14 @@ $(document).ready(function () {
      function loadCalendar() {
       var id = 8;
       for (let i = 0; i < 11; i++) {
-        var saved = localStorage.getItem(`${id}`);
-        if (localStorage.getItem(`${id}`) === null) {
+        var savedName = localStorage.getItem(`name-${id}`);
+        var savedDetails = localStorage.getItem(`details-${id}`)
+        console.log(savedDetails);
+        if (localStorage.getItem(`name-${id}`) === null) {
           console.log('null');
         } else {
-        $(`#header-${id}`).text(`${id}:00 ${saved}`);  
+        $(`#header-${id}`).html(`${id}:00 ${savedName}`);  
+        $(`#body-${id}`).html(`${savedDetails}`);
         }
         id += 1;
       }
@@ -66,7 +70,7 @@ $(document).ready(function () {
 
     }) */
     //get event form input and render event name to header
-    //retrieve description from DOM (will be children or siblings)
+    //retrieve details from DOM (will be children or siblings)
     //$get HTML id, val, get information from storage
 
 
