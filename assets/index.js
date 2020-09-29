@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //Initialize material components
-  M.AutoInit();
+  $('.collapsible').collapsible();
 
   //Initialize the calendar
   setClock();
@@ -9,7 +9,6 @@ $(document).ready(function () {
 
   //Set the interval to upddate clock and corresponding color codes
   setInterval(codeTime, 30000);
-
 
   function codeTime() {
     //Set the clock and timecode to update at the same interval
@@ -24,8 +23,8 @@ $(document).ready(function () {
         $(`#header-${calendarHour}`).addClass('teal lighten-4'); //Event is in the past
       } else if (currentHour < calendarHour) { 
         $(`#header-${calendarHour}`).addClass('teal'); //Event is in the future
-      } else if (currentHour === calendarHour) {
-        console.log('now');
+      } else if (currentHour > 18) {
+        localStorage.clear(); //If the work-day is over, reset the calendar.
       }
     });
   }
@@ -44,7 +43,6 @@ $(document).ready(function () {
 
     localStorage.setItem(`name-${time}`, eventName);
     localStorage.setItem(`details-${time}`, details);
-    //localStorage.setItem(`submit-date`, moment().format('ll'));
     loadCalendar(); //Reload page and populate headers
   });
 
