@@ -21,10 +21,12 @@ $(document).ready(function () {
       var calendarHour = parseInt($(this).attr('value'));
       if (currentHour > calendarHour) {
         $(`#header-${calendarHour}`).addClass('teal lighten-5'); //Event is in the past
+        $(`#badge-${calendarHour}`).addClass('black-text');
       } else if (currentHour < calendarHour) {
         $(`#header-${calendarHour}`).addClass('teal'); //Event is in the future
+        $(`#badge-${calendarHour}`).addClass('white-text');
       } else if (currentHour === calendarHour) {
-        console.log('now');
+        $(`#badge-${calendarHour}`).addClass('black-text');
       }
     });
   }
@@ -58,7 +60,7 @@ $(document).ready(function () {
       } else {
         $(`#badge-${id}`).html(`${savedName}`);
         //because the collapsible menu doesn't accomodate internal divs, icons have to be re-rendered.
-        $(`#body-${id}`).html(`<h5>${savedName}</h5><p>${savedDetails}</p>`);
+        $(`#body-${id}`).html(`<h5>${savedName}</h5><blockquote>${savedDetails}</blockquote>`);
       }
       id += 1; //When event name and details are rendered, set the id to the next hour
     }
@@ -67,8 +69,8 @@ $(document).ready(function () {
   //Refresh the calendar every day. If Mon (1) is not the same day as the expiration (2, etc...), it's time to reset the calendar.
   function resetCalendar() {
   var now = new Date().getDay();
-  console.log(now);
   var expiration = localStorage.getItem('expiration');
+
   if (expiration === now) {
     console.log(expiration);
   } else if (expiration != now) {
@@ -76,12 +78,7 @@ $(document).ready(function () {
     localStorage.setItem('expiration', now)
   } 
 }
-  //Set the calendar to expire after one day
-  /* function resetCalendar() {
-    var expire = moment().endOf('day').fromNow();
-    
-  } */
-
+  
 });
 
 
