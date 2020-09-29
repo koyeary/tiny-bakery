@@ -20,11 +20,11 @@ $(document).ready(function () {
     $('li').each(function () {
       var calendarHour = parseInt($(this).attr('value'));
       if (currentHour > calendarHour) {
-        $(`#header-${calendarHour}`).addClass('teal lighten-4'); //Event is in the past
-      } else if (currentHour < calendarHour) { 
+        $(`#header-${calendarHour}`).addClass('teal lighten-5'); //Event is in the past
+      } else if (currentHour < calendarHour) {
         $(`#header-${calendarHour}`).addClass('teal'); //Event is in the future
-      } else if (currentHour > 18) {
-        localStorage.clear(); //If the work-day is over, reset the calendar.
+      } else if (currentHour === calendarHour) {
+        console.log('now');
       }
     });
   }
@@ -47,6 +47,7 @@ $(document).ready(function () {
   });
 
   function loadCalendar() {
+    resetCalendar();
     var id = 8; //the HTML 'id' is the hour of the current key being rendered
     for (let i = 0; i < 11; i++) {
       var savedName = localStorage.getItem(`name-${id}`);
@@ -61,8 +62,20 @@ $(document).ready(function () {
       }
       id += 1; //When event name and details are rendered, set the id to the next hour
     }
-  }  
+  }
 
+  //Refresh the calendar every day. If Mon (1) is not the same day as the expiration (2, etc...), it's time to reset the calendar.
+  function resetCalendar() {
+  var now = new Date().getDay();
+  console.log(now);
+  var expiration = localStorage.getItem('expiration');
+  if (expiration === now) {
+    console.log(expiration);
+  } else if (expiration != now) {
+    localStorage.clear();
+    localStorage.setItem('expiration', now)
+  } 
+}
   //Set the calendar to expire after one day
   /* function resetCalendar() {
     var expire = moment().endOf('day').fromNow();
