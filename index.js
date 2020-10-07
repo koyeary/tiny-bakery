@@ -20,6 +20,7 @@ $(document).ready(function () {
   function colorCode() {
     //Set the clock and color code to update at the same interval
     setClock();
+    resetCalendar();
     //Find the current id
     var currentHour = moment().hours();
 
@@ -47,12 +48,11 @@ $(document).ready(function () {
     localStorage.setItem(`name-${id}`, eventName);
     localStorage.setItem(`details-${id}`, details);
     
-    //Refresh the calendar
-    loadCalendar(); 
+    //Refresh the page
+    location.reload(); 
   });
 
   function loadCalendar() {
-    resetCalendar();
     var id = 8; //the HTML 'id' is the hour of the current key being rendered, beginning with 8AM.
     for (let i = 0; i < 11; i++) { //11 refers to the total number of timeblocks
       var savedName = localStorage.getItem(`name-${id}`);
@@ -63,28 +63,13 @@ $(document).ready(function () {
       } else {
         $(`#badge-${id}`).html(`${savedName}`);
         //remove input fields and reset calendar panel with event details, and an option to reset and write a new event
-        $(`#body-${id}`).html(`<h5>${savedName}</h5><blockquote>${savedDetails}</blockquote><div class='card-action center-align'><button class='btn waves-effect waves-light reset' id='${id}'>Reset</button></div>`);
+        $(`#body-${id}`).html(`<h5>${savedName}</h5><blockquote>${savedDetails}</blockquote><div class='card-action center-align'><button class='btn waves-effect waves-light reset' id='${id}'>Remove</button></div>`);
       }
       id += 1; //When event name and details are rendered, set the id to the next hour
     }
   }
-
-    //Manually reset the calendar
-    $('.btn-large').on('click', function() {
-      localStorage.clear();
-      localStorage.setItem('expiration', now);
-      location.reload();
-    });
-  
-    //Manually reset a single event
-    $('.reset').on('click', function() {
-      var id = this.id;
-      localStorage.removeItem(`name-${id}`, this.value)
-      localStorage.removeItem(`details-${id}`, this.value)
-      location.reload();
-    }); 
-  
     //Daily automated reset. If Mon (1), Tue (2), etc... is not the same day as the 'expiration' in local storage, reset the calendar.
+
     function resetCalendar() {
       var now = new Date().getDay();
       var expiration = localStorage.getItem('expiration');
@@ -93,11 +78,26 @@ $(document).ready(function () {
         console.log(expiration);
       } else if (expiration != now) {
         localStorage.clear();
-        localStorage.setItem('expiration', now)
+        localStorage.setItem('expiration', now);
       }
     }
 
-});
+
+    //Manually reset the calendar
+    $('.btn-large').on('click', function() {
+      localStorage.clear();
+      location.reload();
+    });
+  
+    //Manually reset a single event
+    $('.reset').on('click', function() {
+      var id = this.id;
+      localStorage.removeItem(`name-${id}`);
+      localStorage.removeItem(`details-${id}`);
+      location.reload();
+    }); 
+  
+  });
 
 
 
